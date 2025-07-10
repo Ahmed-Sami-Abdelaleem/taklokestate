@@ -1,0 +1,17 @@
+{
+  "name": "taklokestate",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "client": "npm start --workspace client",
+    "server": "npm start --workspace server",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
