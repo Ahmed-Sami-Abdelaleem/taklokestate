@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   mongo:
     image: mongo
@@ -11,10 +10,14 @@ services:
 
   app:
     build: .
-    container_name: node-app
+    container_name: server-app
     ports:
       - "3000:3000"
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: npm run dev
     depends_on:
       - mongo
     environment:
-      MONGO_URI: mongodb://admin:secret@mongo:27017/?authSource=admin
+      - MONGO_URI=mongodb://admin:secret@mongo:27017/mydb?authSource=admin
